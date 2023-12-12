@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        #contenedor {
+            position: relative; background-color: #c0c0c0;
+        }
+
+        #cuadrado {
+            background-color: #00FF00; width: 100px; height: 100px;
+            position: relative; left: 100px; top: 100px;
+        }
+    </style>
+    <script>
+        class Cuadrado{
+            constructor(){
+                this.posX = Cuadrado.incrementa;
+                console.log(this.posX);
+            }
+            static get incrementa(){
+                Cuadrado.numero = (Cuadrado.numero || 100)+ 20;
+                return Cuadrado.numero;
+            }
+            establecerPoX1(name){
+                document.getElementById(name).style.left= this.posX+ "px";
+            }
+            salirPantalla(name){
+                let cadena ="Posición:"+this.posX;
+                document.getElementById(name).innerHTML = cadena;
+            }
+        }
+        function incrementar(nom){
+            objCuadrado  = new Cuadrado();
+            objCuadrado.establecerPoX1(nom);
+            objCuadrado.salirPantalla(nom);
+        }
+    </script>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="cuadrado" onclick="incrementar('cuadrado')"></div>
+    </div>
+</body>
+</html>
