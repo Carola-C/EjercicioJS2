@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>EMCA - Arrays1</title>
+    <script>
+        class ficha{
+            constructor(){
+                this.arrayNumeros =[10,20,30,40,50,60,70,80,90];
+            }
+            mostrarMayores50(){
+                let texto="";
+                let datos = this.arrayNumeros;
+                for(let i=0; i<datos.length; i++){
+                    if(datos[i]>50) texto += `<p>Dato mayor50: ${datos[i]}`;
+                }
+                document.getElementById("salidaDatos").innerHTML = texto;
+            }
+            arrayMenosresX(cota){
+                let arraMenores =[];
+                let datos= this.arrayNumeros;
+                for( let i=0; i<datos.length; i++){
+                    if(datos[i]<cota) arraMenores[i] = datos[i];
+                }
+                document.getElementById("salidaDatos").innerHTML = arraMenores;
+            }
+        }
+        function programa(valor){
+            obj = new ficha();
+            if(valor==1) obj.mostrarMayores50();
+            else obj.arrayMenosresX(valor);
+        }
+    </script>
+</head>
+<body>
+    <h3>Menores o Mayores</h3>
+    <input type="button" value="Ver mayores 50" onclick="programa(1)">
+    <form>
+        Ver menores que: <input type="text" name="txtMenor" size="10">
+        <input type="button" value="Menores" onclick="programa(txtMenor.value)">
+    </form>
+    <div id="salidaDatos"></div>
+</body>
+</html>
