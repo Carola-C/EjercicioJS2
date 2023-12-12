@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calcular áre y perímetro</title>
+    <script>
+        var triangulo = (function(){
+            return {
+                perimetro: function(altura, base){
+                    var calculoperimetro = 2*(altura+base); return `El perimetro es ${calculoperimetro}`;
+                },
+                area: function(altura,base){
+                    var calculoarea = altura*base;
+                    return "El area es "+ calculoarea;
+                }
+            }
+        })();
+        var rectangulo =(function(){
+            return {
+                perimetro(base, altura){
+                    var calculo = base*2 + altura*2; return "El perímetro es "+calculo;
+                },
+                area(base, altura){
+                    var calculo = base*altura; return "El área es "+calculo;
+                }
+            }
+        })();
+        var cuadrado =(function(){
+            return{
+                perimetro(lado){
+                    var calculo = lado*4; return "El perímetro "+calculo;
+                },
+                area(lado){
+                    var calculo =lado*lado; return "El área es "+calculo;
+                }
+            }
+        })();
+        function calculoArea(){
+            var figura = document.getElementById('figuras').value;
+            var area;
+            var base = parseFloat(document.getElementById('base').value);
+            var altura = parseFloat(document.getElementById('altura').value);
+            if(figura =='Trian'){
+                area = triangulo.area(altura,base);
+            }
+            if(figura =='Rect'){
+                area = rectangulo.area(base,altura);
+            }
+            if(figura =='Cuad'){
+                area = cuadrado.area(base);
+            }
+                document.getElementById('resultado').innerHTML = area;
+        }
+        function calculoPerio(){
+            var figura = document.getElementById('figuras').value;
+            var area;
+            var base = parseFloat(document.getElementById('base').value);
+            var altura = parseFloat(document.getElementById('altura').value);
+            if(figura =='Trian'){
+                area = triangulo.perimetro(altura,base);
+            }
+            if(figura =='Rect'){
+                area = rectangulo.perimetro(base,altura);
+            }
+            if(figura =='Cuad'){
+                area = cuadrado.perimetro(base);
+            }
+                document.getElementById('resultado').innerHTML = area;
+        }
+        function cambio(){
+            var figura = document.getElementById('figuras').value;
+            figura=='Cuad'? document.getElementById('input2').style.display='none' : document.getElementById('input2').style.display=''
+        }
+    </script>
+</head>
+<body>
+    <h3>Calcular área y perímetro</h3>
+    <select id="figuras" onchange="cambio()">
+        <option value="Trian">Triángulo</option>
+        <option value="Rect">Rectángulo</option>
+        <option value="Cuad">Cuadrado</option>
+    </select>
+    <div id="input1">
+    Ingresa valor de base: <input type="text" id="base">
+    </div>
+    <div  id="input2">
+    Ingresa valor de altura: <input type="text" id="altura">
+    </div>
+    <input type="button" value="Perimetro" onclick="calculoPerio()">
+    <input type="button" value="Area" onclick="calculoArea()">
+    <p id="resultado"></p>
+</body>
+</html>
