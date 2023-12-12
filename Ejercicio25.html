@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contar</title>
+    <script>
+        function f_vocales(palabre){
+            if(palabre!==''){
+                conta=0;
+                for(let i =0; i<palabre.length; i++){
+                    if (palabre[i].match(/a|á|e|é|i|í|o|ó|u|ú/)) {
+                        conta++;
+                    }
+                }
+                document.getElementById("resultado").innerHTML = `Contiene ${conta} vocales`
+            }
+        }
+        function f_total(palabra){
+            if (palabra!=='') {
+                document.getElementById("resultado").innerHTML = `Contiene ${palabra.length} letras`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Contar vocales</h2>
+    <form>
+        <input type="text" name="palabra">
+        <input type="button" value="Contar vocales" onclick="f_vocales(palabra.value)">
+        <input type="button" value="Contar letras" onclick="f_total(palabra.value)">
+        <p id="resultado"></p>
+    </form>
+</body>
+</html>
