@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular altura</title>
+    <script>
+        function calcularAltura(){
+            let edad = parseInt(document.getElementById("edad").value);
+        let altura = parseInt(document.getElementById("altura").value);
+        let resultado = altura + (edad*6);
+        document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</head>
+<body>
+    <h3>Calcular altura</h3>
+    Ingresa la edad del niño <input type="text" id="edad">
+    Ingresa la altura del niño (cm) <input type="text" id="altura">
+    Su altura será de <span id="resultado"></span>
+    <input type="button" value="Calcular" onclick="calcularAltura()">
+</body>
+</html>
