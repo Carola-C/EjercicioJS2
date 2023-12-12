@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <script>
+         let libros = [
+            {
+                "id" : "978-0641723445",
+                "cat" : ["book","hardcover"],  "name" : "The Lightning Thief",  "author" : "Rick Riordan",
+                "series_t" : "Percy Jackson and the Olympians",  "genre_s" : "fantasy",
+                "inStock" : true,   
+                "price" : 12,
+                "pages_i" : 384
+            }
+            ,
+            {
+                "id" : "978-1857995879",
+                "cat" : ["book","paperback"],
+                "name" : "Sophie's World : The Greek Philosophers",  "author" : "Jostein Gaarder",
+                "genre_s" : "fantasy",
+                "inStock" : true,  "price" : 3,
+                "pages_i" : 64
+            }
+            ,
+            {
+                "id" : "978-1933988177",
+                "cat" : ["book","paperback"],
+                "name" : "Lucene in Action, Second Edition",  "author" : "Michael McCandless",
+                "genre_s" : "IT",
+                "inStock" : true,  "price" : 30,
+                "pages_i" : 475
+            }
+            ,
+            {
+                "id" : "978-1933938472",
+                "cat" : ["book","paperback"],
+                "name" : "Reina Roja",  "author" : "Juan Gómez-Jurado",
+                "genre_s" : "Thriller",
+                "inStock" : true,  "price" : 70,
+                "pages_i" : 566
+            }
+            ,
+            {
+                "id" : "978-1392840374",
+                "cat" : ["book","hardcover"],
+                "name" : "La mansión de los abismos",  "author" : "Joan Manuel Gisbert",
+                "genre_s" : "Suspenso",
+                "inStock" : true,  "price" : 50,
+                "pages_i" : 230
+            }
+            ,
+            {
+                "id" : "394-2839988177",
+                "cat" : ["book","paperback"],
+                "name" : "El principito",  "author" : "Antoine de Saint-Exupéry",
+                "genre_s" : "Literatura infantil",
+                "inStock" : true,  "price" : 45,
+                "pages_i" : 184
+            }
+            ];
+            function mostrarLibros(){
+                txtLibros ='';
+                libros.forEach(element => {
+                    txtLibros +=  salidaLibros(element);
+                });
+                document.getElementById("divLibros").innerHTML=txtLibros;
+            }
+            function mayor20(){
+                txtLibros ='';
+                libros.forEach(element => {
+                    if(element.price>20){
+                        txtLibros +=  salidaLibros(element);
+                    }
+                });
+                document.getElementById("divLibros").innerHTML=txtLibros;
+            }
+            function mostrarxAutor(autor){
+                txtLibros ='';
+                libros.forEach(element => {
+                    if(element.author==autor){
+                        txtLibros +=  salidaLibros(element);
+                    }
+                });
+                document.getElementById("divLibros").innerHTML=txtLibros;
+            }
+            function salidaLibros(element){
+                return `<h3>${element.name}</h3>
+                        <label><span>Autor:</span> ${element.author}</label><br>
+                        <label><span>Género:</span> ${element.genre_s}</label><br>
+                        <label><span>N° pág:</span> ${element.pages_i}</label><br>
+                        <label><span>Precio:</span> ${element.price}</label><br>
+                        ${element.inStock==true ?`<label><span>Disponible</span></label><br>`:`<label><span>No disponible</span></label><br>`}`;
+            }
+            function llenarSelect(){
+                elemento = document.getElementById("selecAutor");
+                txtLibros='';
+                libros.forEach(element => {
+                    txtLibros+=`<option value="${element.author}">${element.author}</option><br>`;
+                });
+                elemento.innerHTML = txtLibros;
+            }
+    </script>
+</head>
+<body onload="llenarSelect()">
+    <h2>Libros</h3>
+        <input type="button" value="Mostar Libros" onclick="mostrarLibros()">
+        <input type="button" value="Precio mayor a 20" onclick="mayor20()">
+        <select id="selecAutor" onchange="mostrarxAutor(selecAutor.value)">
+        </select>
+    <div id="divLibros"></div>
+</body>
+</html>
